@@ -5,31 +5,41 @@ type CreateMessageType= {
     chatId: number,
     text: string,
 }
+type UpdateMessageType= {
+    Id: number,
+    text: string,
+}
 const messagerReducer= createSlice({
     name: "messagerReducer",
     initialState,
     reducers: {
-        CreateMessage: (state: StateType, payload: PayloadAction<CreateMessageType>)=>{
+        CreateMessage: (state: StateType, action: PayloadAction<CreateMessageType>)=>{
             state.messages.push({
                 id: Date.now(),
-                chatId: payload.payload.chatId,
-                text: payload.payload.text,
+                chatId: action.payload.chatId,
+                text: action.payload.text,
                 timestamp: String(new Date()),
                 isMine: false
             })
-            const chatLastMessage= state.chats.find((chat)=>chat.id === payload.payload.chatId)
+            const chatLastMessage= state.chats.find((chat)=>chat.id === action.payload.chatId)
             if(chatLastMessage){
-                chatLastMessage.lastMessage= payload.payload.text
+                chatLastMessage.lastMessage= action.payload.text
             }
         },
-        DeleteMessage: (state: StateType, payload: PayloadAction<number>)=>{
-            const mesDel= state.messages.find((mes)=>mes.id === payload.payload)?.text
-            state.messages = state.messages.filter((mes)=>mes.id != payload.payload)
+        DeleteMessage: (state: StateType, action: PayloadAction<number>)=>{
+            const mesDel= state.messages.find((mes)=>mes.id === action.payload)?.text
+            state.messages = state.messages.filter((mes)=>mes.id != action.payload)
             const chatDel= state.chats.find((mes)=> mes.lastMessage === mesDel)
             if(chatDel){
                 chatDel.lastMessage = 'удалено'}
+        },
+        UpdateMessage: (State: StateType, action: PayloadAction<UpdateMessageType>)=>{
+            const messageUpdate= State.messages.find((message)=>message.id === action.payload.Id)
+            if(messageUpdate){
+                messageUpdate.text= action.payload.text
+            }
         }
     }
 })
-export const {CreateMessage, DeleteMessage}= messagerReducer.actions
+export const {CreateMessage, DeleteMessage, UpdateMessage}= messagerReducer.actions
 export default messagerReducer.reducer

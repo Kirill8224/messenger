@@ -1,4 +1,4 @@
-import { CreateMessage, DeleteMessage } from "./messagesSlise";
+import { CreateMessage, DeleteMessage, UpdateMessage } from "./messagesSlise";
 import messagerReducer from "./messagesSlise";
 import {expect, test} from 'vitest'
 import { initialState } from './dal'
@@ -9,4 +9,8 @@ test('CreateMessage', ()=>{
 test('DeleteMessage', ()=>{
     expect(messagerReducer(initialState, DeleteMessage(13)).messages.length).toBe(initialState.messages.length -1)
     expect(messagerReducer(initialState, DeleteMessage(13)).chats[3].lastMessage).toBe('удалено')
+})
+test('UpdateMessage', ()=>{
+    const action= UpdateMessage({Id: 2, text: 'изменил'})
+    expect(messagerReducer(initialState, action).messages.at(1)?.text).toBe('изменил')
 })
