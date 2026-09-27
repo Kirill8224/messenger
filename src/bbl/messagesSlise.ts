@@ -21,8 +21,16 @@ const messagerReducer= createSlice({
             if(chatLastMessage){
                 chatLastMessage.lastMessage= payload.payload.text
             }
+        },
+        DeleteMessage: (state: StateType, payload: PayloadAction<number>)=>{
+            const mesDel= state.messages.find((mes)=>mes.id === payload.payload).text
+            state.messages = state.messages.filter((mes)=>mes.id != payload.payload)
+            const chatDel= state.chats.find((mes)=> mes.lastMessage === mesDel)
+            if(chatDel){
+                chatDel.lastMessage = 'удалено'
+            }
         }
     }
 })
-export const {CreateMessage}= messagerReducer.actions
+export const {CreateMessage, DeleteMessage}= messagerReducer.actions
 export default messagerReducer.reducer
