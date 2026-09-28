@@ -1,3 +1,4 @@
+import type { RootState } from "../bbl/store";
 export type StateType={
     chats: Chat[],
     messages: Message[]
@@ -17,6 +18,16 @@ export type Message= {
     timestamp: string,
     isMine: boolean
 }
+
+export type Chatuitupe= {
+    ChatPrivate: Chat
+}
+export type MessagesType= {
+    selectedChat: number, 
+    MessengerState: RootState['messager'], 
+    setSelectedChat: (id: number) => void
+}
+
 
 
 export const initialState: StateType ={

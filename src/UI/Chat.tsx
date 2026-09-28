@@ -1,24 +1,16 @@
-import type { Chat } from "../bbl/dal"
 import {  useSelector } from "react-redux";
 import type { RootState } from "../bbl/store";
 import { Card, Typography, Avatar, Button } from "@mui/material";
 import { useState } from "react";
-type Chatuitupe= {
-    ChatPrivate: Chat
-}
+import { Messages } from "./Messages";
+import type {Chatuitupe} from "../bbl/dal";
+
+
 export const ChatUI= (ChatPrivate: Chatuitupe)=>{
     const [selectedChat, setSelectedChat]= useState<number>(0)
     const MessengerState= useSelector((state: RootState)=>state.messager)
     if(selectedChat != 0){
-        const Messages= MessengerState.messages.filter((message)=>message.chatId === selectedChat)
-        return(<Card>
-            <Button onClick={()=>{setSelectedChat(0)}} variant="contained">назад</Button>
-            {Messages.map((message)=>(
-                <Card sx={{m: 1}}>
-                    <Typography sx={message.isMine ? {backgroundColor: '#b8e5ff'} : {backgroundColor: 'white'}}>{message.text}</Typography>
-                </Card>
-            ))}
-        </Card>)
+        return<Messages selectedChat= {selectedChat} MessengerState= {MessengerState} setSelectedChat= {setSelectedChat}/>
     }
     return(
         <Card key= {ChatPrivate.ChatPrivate.id} sx={{m: 1}}>
