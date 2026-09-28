@@ -22,41 +22,41 @@ export type Message= {
 export const initialState: StateType ={
     chats: [
         {
-            id: 1,
-            name: "Алексей",
-            avatar: "https://i.pravatar.cc/150?img=12",
-            lastMessage: "Завтра увидимся!",
-            unread: 2
+        id: 1,
+        name: "Алексей",
+        avatar: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Man_portrait_(5689483063).jpg",
+        lastMessage: "Завтра увидимся!",
+        unread: 2
         },
         {
-            id: 2,
-            name: "Максим",
-            avatar: "https://i.pravatar.cc/150?img=13",
-            lastMessage: "Окей, договорились",
-            unread: 0
+        id: 2,
+        name: "Максим",
+        avatar: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Man_classic_portrait.jpg",
+        lastMessage: "Окей, договорились",
+        unread: 0
         },
         {
-            id: 3,
-            name: "Анна",
-            avatar: "https://i.pravatar.cc/150?img=47",
-            lastMessage: "Посмотри фото 😄",
-            unread: 4
+        id: 3,
+        name: "Анна",
+        avatar: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Woman_face.jpg",
+        lastMessage: "Посмотри фото 😄",
+        unread: 4
         },
         {
-            id: 4,
-            name: "Дмитрий",
-            avatar: "https://i.pravatar.cc/150?img=33",
-            lastMessage: "Когда будешь свободен?",
-            unread: 1
+        id: 4,
+        name: "Дмитрий",
+        avatar: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Urfa_man_portrait.jpg",
+        lastMessage: "Когда будешь свободен?",
+        unread: 1
         },
         {
-            id: 5,
-            name: "Мария",
-            avatar: "https://i.pravatar.cc/150?img=44",
-            lastMessage: "Спасибо!",
-            unread: 0
+        id: 5,
+        name: "Мария",
+        avatar: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Woman_portrait_(8151137082).jpg",
+        lastMessage: "Спасибо!",
+        unread: 0
         }
-    ],
+        ],
     messages: [
         {
             id: 1,

@@ -1,12 +1,13 @@
-import {Card, Typography} from '@mui/material'
+import {Card} from '@mui/material'
 import './App.css'
+import { Chats } from './UI/chats'
 
 function App() {
 
   return (
     <>
     <Card>
-      <Typography variant='h1'>в разработке</Typography>
+      <Chats />
     </Card>
     </>
   )
