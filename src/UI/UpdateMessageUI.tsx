@@ -15,12 +15,12 @@ export const UpdateMessageUI= (props: MessageProps)=>{
         dispatch(UpdateMessage({Id: props.message.id, text: editMessageText}))
     }
     if(editMessage){
-        return(<Card>
+        return(<Card sx={{backgroundColor: '#b8e5ff'}}>
             <Input onChange={(e)=>{setEeditMessageText(e.target.value)}} name="сообщение" placeholder="печатайте..." />
             {props.message.isMine ? <Button onClick={()=>{editMessageText ? handClick() : setEditMessage(false)}}>отправить</Button> : ''}
         </Card>)
     }
-    return(<Card>
+    return(<Card sx={{backgroundColor: '#b8e5ff'}}>
         {props.message.isMine && !editMessage ? <Button onClick={()=>setEditMessage(true)}>изменить</Button> : ''}
     </Card>)
 }
