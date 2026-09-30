@@ -18,8 +18,8 @@ const messagerReducer= createSlice({
                 id: Date.now(),
                 chatId: action.payload.chatId,
                 text: action.payload.text,
-                timestamp: String(new Date()),
-                isMine: false
+                timestamp: new Date().toLocaleTimeString(),
+                isMine: true
             })
             const chatLastMessage= state.chats.find((chat)=>chat.id === action.payload.chatId)
             if(chatLastMessage){
