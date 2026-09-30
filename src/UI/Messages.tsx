@@ -2,7 +2,9 @@ import { Card, Typography, Button, Input} from "@mui/material";
 import { useDispatch } from "react-redux";
 import type {MessagesType } from "../bbl/dal";
 import { useState } from "react";
-import { CreateMessage } from "../bbl/messagesSlise";
+import { CreateMessage} from "../bbl/messagesSlise";
+import { UpdateMessageUI } from "./UpdateMessageUI";
+
 
 export const Messages = ({selectedChat, MessengerState, setSelectedChat}: MessagesType)=>{
     const dispatch= useDispatch()
@@ -13,8 +15,11 @@ export const Messages = ({selectedChat, MessengerState, setSelectedChat}: Messag
         {Messages.map((message, index)=>(
             <Card sx={{m: 1}} key={index}>
                 <Typography sx={message.isMine ? {backgroundColor: '#b8e5ff'} : {backgroundColor: 'white'}}>{message.timestamp}: {message.text}</Typography>
+                <Button color="error">удалить</Button>
+                <UpdateMessageUI message= {message}/>
             </Card>
         ))}
         <Input onChange={(e)=>{setNewMessage(e.target.value)}} name="сообщение" placeholder="печатайте..." />
         <Button onClick={()=>{newMessage ? dispatch(CreateMessage({chatId: selectedChat, text: newMessage})) : alert('введите сообщение')}}>отправить</Button>
     </Card>)}
+
