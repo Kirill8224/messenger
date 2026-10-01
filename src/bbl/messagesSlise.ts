@@ -27,17 +27,22 @@ const messagerReducer= createSlice({
             }
         },
         DeleteMessage: (state: StateType, action: PayloadAction<number>)=>{
-            const mesDel= state.messages.find((mes)=>mes.id === action.payload)?.text
+            const mesDel= state.messages.find((mes)=>mes.id === action.payload)
             state.messages = state.messages.filter((mes)=>mes.id != action.payload)
-            const chatDel= state.chats.find((mes)=> mes.lastMessage === mesDel)
+            const chatDel= state.chats.find((chat)=> chat.lastMessage === mesDel.text && chat.id === mesDel.chatId)
             if(chatDel){
                 chatDel.lastMessage = 'удалено'}
         },
         UpdateMessage: (State: StateType, action: PayloadAction<UpdateMessageType>)=>{
             const messageUpdate= State.messages.find((message)=>message.id === action.payload.Id)
+            const Chat= State.chats.find((chat)=> chat.id === messageUpdate.chatId)
+            if(Chat.id === messageUpdate.chatId && Chat.lastMessage === messageUpdate.text){
+                Chat.lastMessage= action.payload.text
+            }
             if(messageUpdate){
                 messageUpdate.text= action.payload.text
             }
+            
         }
     }
 })
