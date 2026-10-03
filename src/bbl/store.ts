@@ -5,4 +5,4 @@ export const globalState= configureStore({
         messager: messagerReducer}
 })
 export type RootState= ReturnType<typeof globalState.getState>
-export type DispathType= typeof globalState.dispatch
+export type Dispatch= typeof globalState.dispatch

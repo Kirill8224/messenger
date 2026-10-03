@@ -1,14 +1,13 @@
-import {  useSelector } from "react-redux";
-import type { RootState } from "../bbl/store";
 import { Card, Typography, Avatar, Button } from "@mui/material";
 import { useState } from "react";
 import { Messages } from "./Messages";
 import type {Chatuitupe} from "../bbl/dal";
+import { useAppSelector} from "../bbl/hooks";
 
 
 export const ChatUI= (ChatPrivate: Chatuitupe)=>{
     const [selectedChat, setSelectedChat]= useState<number>(0)
-    const MessengerState= useSelector((state: RootState)=>state.messager)
+    const MessengerState= useAppSelector((state)=>state.messager)
     if(selectedChat != 0){
         return<Messages selectedChat= {selectedChat} MessengerState= {MessengerState} setSelectedChat= {setSelectedChat}/>
     }

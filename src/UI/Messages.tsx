@@ -1,13 +1,13 @@
 import { Card, Typography, Button, Input} from "@mui/material";
-import { useDispatch } from "react-redux";
 import type {MessagesType } from "../bbl/dal";
 import { useState } from "react";
 import { CreateMessage, DeleteMessage} from "../bbl/messagesSlise";
 import { UpdateMessageUI } from "./UpdateMessageUI";
+import { useAppDispatch } from "../bbl/hooks";
 
 
 export const Messages = ({selectedChat, MessengerState, setSelectedChat}: MessagesType)=>{
-    const dispatch= useDispatch()
+    const dispatch= useAppDispatch()
     const [newMessage, setNewMessage]= useState<string>('')
     const Messages= MessengerState.messages.filter((message)=>message.chatId === selectedChat)
     return(<Card>

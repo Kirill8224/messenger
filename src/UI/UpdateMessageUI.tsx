@@ -1,5 +1,5 @@
 import { Card, Button, Input} from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../bbl/hooks";
 import { useState } from "react";
 import {  UpdateMessage } from "../bbl/messagesSlise";
 import type { Message } from "../bbl/dal";
@@ -7,7 +7,7 @@ type MessageProps= {
     message: Message
 }
 export const UpdateMessageUI= (props: MessageProps)=>{
-    const dispatch= useDispatch()
+    const dispatch= useAppDispatch()
     const [editMessage, setEditMessage]= useState<boolean>(false)
     const [editMessageText, setEeditMessageText]= useState<string>('')
     const handClick= ()=>{
