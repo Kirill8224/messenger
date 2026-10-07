@@ -52,8 +52,17 @@ const messagerReducer= createSlice({
                 messageUpdate.text= action.payload.text
             }
             
+        },
+        changeTheme: (state: StateType,)=>{
+            console.log(state.theme)
+            if(state.theme === 'white'){
+                 state.theme = 'black'
+            }
+            else{
+                state.theme = 'white'
+            }
         }
     }
 })
-export const {CreateMessage, DeleteMessage, UpdateMessage}= messagerReducer.actions
+export const {CreateMessage, DeleteMessage, UpdateMessage, changeTheme}= messagerReducer.actions
 export default messagerReducer.reducer

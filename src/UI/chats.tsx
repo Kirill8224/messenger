@@ -1,10 +1,16 @@
-import { useSelector } from "react-redux";
-import type { RootState } from "../bbl/store";
+import { useAppDispatch, useAppSelector } from "../bbl/hooks";
+import { changeTheme } from "../bbl/messagesSlise";
+import { Button} from "@mui/material";
 import { ChatUI } from "./Chat";
 
 export const Chats= ()=>{
-    const MessengerState= useSelector((state: RootState)=>state.messager)
+    const MessengerState= useAppSelector((state)=>state.messager)
+    const dispatch= useAppDispatch()
+    const colorTheme= MessengerState.theme === 'black' ? 'white' : 'blue'
     return(
-        MessengerState.chats.map((chat)=>(
-        <ChatUI key= {chat.id} ChatPrivate= {chat}/>)))
+        <div style={{backgroundColor: MessengerState.theme}}>
+        <Button sx={{color: colorTheme}} onClick={()=>{dispatch(changeTheme())}}>сменить тему на {MessengerState.theme === 'white' ? 'чёрнуюю' : 'белую'}</Button>
+        {MessengerState.chats.map((chat)=>(
+        <ChatUI key= {chat.id} ChatPrivate= {chat}/>))}
+        </div>)
 }
