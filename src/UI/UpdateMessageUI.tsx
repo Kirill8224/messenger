@@ -2,7 +2,7 @@ import { Card, Button, Input} from "@mui/material";
 import { useAppDispatch } from "../bbl/hooks";
 import { useState } from "react";
 import {  UpdateMessage } from "../bbl/messagesSlise";
-import type { Message } from "../bbl/dal";
+import type { Message } from "../bbl/types";
 type MessageProps= {
     message: Message
 }

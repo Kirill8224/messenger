@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
-import { initialState } from './dal'
-import type { StateType } from './dal'
-import type { Chat } from './dal'
+import { initialState } from './data'
+import type { State } from './types'
+import type { Chat } from './types'
 type CreateMessageType= {
     chatId: number,
     text: string,
@@ -14,7 +14,7 @@ const messagerReducer= createSlice({
     name: "messagerReducer",
     initialState,
     reducers: {
-        CreateMessage: (state: StateType, action: PayloadAction<CreateMessageType>)=>{
+        CreateMessage: (state: State, action: PayloadAction<CreateMessageType>)=>{
             state.messages.push({
                 id: Date.now(),
                 chatId: action.payload.chatId,
@@ -27,7 +27,7 @@ const messagerReducer= createSlice({
                 chatLastMessage.lastMessage= action.payload.text
             }
         },
-        DeleteMessage: (state: StateType, action: PayloadAction<number>)=>{
+        DeleteMessage: (state: State, action: PayloadAction<number>)=>{
             const mesDel= state.messages.find((mes)=>mes.id === action.payload)
             state.messages = state.messages.filter((mes)=>mes.id != action.payload)
             let chatDel
@@ -37,7 +37,7 @@ const messagerReducer= createSlice({
             if(chatDel){
                 chatDel.lastMessage = 'удалено'}
         },
-        UpdateMessage: (State: StateType, action: PayloadAction<UpdateMessageType>)=>{
+        UpdateMessage: (State: State, action: PayloadAction<UpdateMessageType>)=>{
             const messageUpdate= State.messages.find((message)=>message.id === action.payload.Id)
             let chat: Chat | undefined
             if(messageUpdate){
@@ -53,7 +53,7 @@ const messagerReducer= createSlice({
             }
             
         },
-        changeTheme: (state: StateType,)=>{
+        changeTheme: (state: State)=>{
             console.log(state.theme)
             if(state.theme === 'white'){
                  state.theme = 'black'

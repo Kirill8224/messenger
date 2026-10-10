@@ -1,5 +1,5 @@
 import { Card, Typography, Button, Input} from "@mui/material";
-import type {MessagesType } from "../bbl/dal";
+import type {MessagesType } from "../bbl/types";
 import { useState } from "react";
 import { CreateMessage, DeleteMessage} from "../bbl/messagesSlise";
 import { UpdateMessageUI } from "./UpdateMessageUI";

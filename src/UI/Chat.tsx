@@ -1,8 +1,9 @@
 import { Card, Typography, Avatar, Button } from "@mui/material";
 import { useState } from "react";
 import { Messages } from "./Messages";
-import type {Chatuitupe} from "../bbl/dal";
-import { useAppSelector} from "../bbl/hooks";
+import type {Chatuitupe} from "../bbl/types";
+import { useAppSelector } from "../bbl/hooks";
+
 
 
 export const ChatUI= (ChatPrivate: Chatuitupe)=>{
